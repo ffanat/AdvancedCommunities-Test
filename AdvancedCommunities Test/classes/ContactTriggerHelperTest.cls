@@ -82,7 +82,7 @@ public class ContactTriggerHelperTest {
         insert acc;
     
         List<Contact> customers = new List<Contact>();
-        // Create 20 customer contacts
+        // Create 20 non-customer contacts
         for (Integer i=0;i<20;i++) {
             Contact c = new Contact(AccountId=acc.Id,
                                     FirstName = 'CustomerFirstName '+i,
@@ -103,7 +103,6 @@ public class ContactTriggerHelperTest {
         Test.stopTest();
         // Find users which created by trigger
         List<User> users = [SELECT IsActive FROM User WHERE LastName Like 'CustomerLastName%'];
-        // Check whether users where deactivated 
         // Compare number of created users with expected number
         System.assertEquals(20, users.size());
     }
